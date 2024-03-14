@@ -1,55 +1,57 @@
-import random
+from random import *
 
-while True:
+choice= ["Rock" , "Paper" , "Scissors"]
+pt=int(input("For how many points you want to play : "))
+print()
+UserPts=0
+CPts=0
 
-    print("\n")
-    print("1.Rock")
-    print("2.Paper")
-    print("3.Scissor")
-    selection=int(input("Enter your choice:"))
-    choices=["Rock", "Paper", "Scissor"]
-
-    if(selection==1):
-        player_choice="Rock"
-        print("\n")
-        print("Player throws",player_choice)
-        computer_choice = random.choice(choices)
-        print("computer throws",computer_choice)
-    elif (selection==2):
-        player_choice="Paper"
-        print("\n")
-        print("Player throws",player_choice)
-        computer_choice = random.choice(choices)
-        print("computer throws",computer_choice)
+print("1.Rock \n2.Paper \n3.Scissors\n")
+ 
+for i in range(pt):
+    opt=input("Enter your Choice : ")
+    comp=choice[randint(0,2)]
+    if opt==comp:
+        print("Tie !")
+        print()
+    elif opt=="1":
+        if comp=="Paper":
+            CPts+=1
+            print("Computer gets a point !")
+        elif comp=="Scissor":
+            UserPts+=1
+            print("You get a point")
+        print()
+    elif opt=="2":
+        if comp=="Rock":
+            UserPts+=1
+            print("You get a point !")
+        elif comp=="Scissor":
+            CPts+=1
+            print("Computer gets a point")
+        print()
+    elif opt=="3":
+        if comp=="Rock":
+            CPts+=1
+            print("Computer gets a point !")
+        elif comp=="Paper":
+            UserPts+=1
+            print("You get a point")
+        print()
     else:
-        player_choice="Scissor"
-        print("\n")
-        print("Player throws",player_choice)
-        computer_choice = random.choice(choices)
-        print("computer throws",computer_choice)
+        print("Enter a correct choice !!")
 
-    if(player_choice == computer_choice):
-        print("Tie Game!")
-    elif(player_choice == "Rock"):
-        if(computer_choice == "Paper"):
-            print("Computer Wins!")
-        elif(computer_choice == "Scissor"):
-            print("Player Wins!")
-    elif(player_choice == "Paper"):
-        if(computer_choice == "Scissor"):
-            print("Computer Wins!")
-        elif(computer_choice == "Rock"):
-            print("Player Wins!")
-    elif(player_choice == "Scissor"):
-        if(computer_choice == "Rock"):
-            print("Computer Wins!")
-        elif(computer_choice == "Paper"):
-            print("Player Wins!")
 
-    print("\n")
-    print("1.Play Again")
-    print("2.Quit")
-    selection = int(input("Do you want to play or quit: "))
+print("YOUR SCORE :" , UserPts ,"\t\t", "COMPUTER'S SCORE:" , CPts)
+print()
 
-    if(selection == 2):
-        break
+if UserPts==CPts:
+    print("Its a Tie ")
+elif UserPts>CPts:
+    print("Congo ! You are a winner !!")
+else:
+    print("Computer Wins... !")
+
+
+    
+            
